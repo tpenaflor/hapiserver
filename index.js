@@ -9,19 +9,28 @@ const server = Hapi.server({
 });
 
 server.route([{
-    method: 'GET',
+    method: 'POST',
     path: '/api',
-    config: { json: { space: 2 } },
+    // config: { json: { space: 2 } },
     handler: function(request, reply) {
-        console.log(request.query)
+        console.log('POST', request.payload)
 
-        return collection.insertOne(request.query);
+        // return collection.insertOne(request.query);
+
+        var strRet = ""
+        for (var key in request.payload) {
+            strRet += key + " : " + request.payload[key] + "\n"
+        }
+
+        return strRet
     }
 }])
 
-MongoClient.connect(url, { useUnifiedTopology: true }, function(err, client) {
-    const db = client.db("Schedule")
-    collection = db.collection('plugSched')
+// MongoClient.connect(url, { useUnifiedTopology: true }, function(err, client) {
+//     const db = client.db("Schedule")
+//     collection = db.collection('plugSched')
 
-    server.start()
-})
+//     server.start()
+// })
+
+server.start()
