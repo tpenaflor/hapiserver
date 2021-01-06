@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient,
     url = process.env.URL
 
 const server = Hapi.server({
-    port: 3000
+    port: 3003
 });
 
 server.route([{
