@@ -15,13 +15,6 @@ server.route([{
         console.log('POST', request.payload)
 
         return collection.insertOne(request.payload);
-
-        // var strRet = ""
-        // for (var key in request.payload) {
-        //     strRet += key + " : " + request.payload[key] + "\n"
-        // }
-
-        // return strRet
     }
 }])
 
